@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AviaTick
 {
@@ -12,7 +13,11 @@ namespace AviaTick
         }
 
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "The field mustn`t be empty")]
         public string Name { get; set; } = null!;
+
+        [Display(Name="City")]
         public int CityId { get; set; }
 
         public virtual City City { get; set; } = null!;
