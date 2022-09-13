@@ -19,9 +19,15 @@ namespace AviaTick.Controllers
         }
 
         // GET: Airports
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
-            var aviaTickDbContext = _context.Airports.Include(a => a.City);
+            if (id == null)
+                return RedirectToAction("Cities", "Index");
+
+            ViewBag.CityId = id;
+            //ViewBag.City = name;
+
+            var aviaTickDbContext = _context.Airports.Where(a => a.CityId == id).Include(a => a.City);
             return View(await aviaTickDbContext.ToListAsync());
         }
 
@@ -45,9 +51,11 @@ namespace AviaTick.Controllers
         }
 
         // GET: Airports/Create
-        public IActionResult Create()
+        public IActionResult Create(int cityId)
         {
-            ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Id");
+            ViewBag.CityId = cityId;
+            //ViewBag.City = _context.Cities.Where(c => c.Id == cityId).FirstOrDefault().Name;
+            //ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name");
             return View();
         }
 
@@ -56,16 +64,19 @@ namespace AviaTick.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,CityId")] Airport airport)
+        public async Task<IActionResult> Create(int cityId, [Bind("Id,Name,CityId")] Airport airport)
         {
+            airport.CityId = cityId;
             if (ModelState.IsValid)
             {
                 _context.Add(airport);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Airports", new { id = cityId});
             }
-            ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Id", airport.CityId);
-            return View(airport);
+            //ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name", airport.CityId);
+            //return View(airport);
+            return RedirectToAction("Index", "Airports", new { id = cityId});
         }
 
         // GET: Airports/Edit/5

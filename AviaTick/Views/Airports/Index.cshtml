@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<AviaTick.Airport>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Airports in the city";
 }
 
-<h1>Index</h1>
+<h1>Airports in the city @ViewBag.City</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    @Html.ActionLink("Add new airport", "Create", new { cityId = @ViewBag.CityId})
 </p>
 <table class="table">
     <thead>

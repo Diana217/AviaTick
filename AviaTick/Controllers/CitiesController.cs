@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AviaTick;
+using System.IO;
 
 namespace AviaTick.Controllers
 {
@@ -41,7 +42,8 @@ namespace AviaTick.Controllers
                 return NotFound();
             }
 
-            return View(city);
+            //return View(city);
+            return RedirectToAction("Index", "Airports", new { id = city.Id, name = city.Name });
         }
 
         // GET: Cities/Create
