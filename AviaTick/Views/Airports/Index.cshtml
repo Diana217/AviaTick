@@ -4,10 +4,10 @@
     ViewData["Title"] = "Airports in the city";
 }
 
-<h1>Airports in the city @ViewBag.City</h1>
+<h1>Airports in the city</h1>
 
 <p>
-    @Html.ActionLink("Add new airport", "Create", new { cityId = @ViewBag.CityId})
+    <a asp-action="Create">Add new airport</a>
 </p>
 <table class="table">
     <thead>

@@ -19,15 +19,9 @@ namespace AviaTick.Controllers
         }
 
         // GET: Airports
-        public async Task<IActionResult> Index(int? id)
+        public async Task<IActionResult> Index()
         {
-            if (id == null)
-                return RedirectToAction("Cities", "Index");
-
-            ViewBag.CityId = id;
-            //ViewBag.City = name;
-
-            var aviaTickDbContext = _context.Airports.Where(a => a.CityId == id).Include(a => a.City);
+            var aviaTickDbContext = _context.Airports.Include(a => a.City);
             return View(await aviaTickDbContext.ToListAsync());
         }
 
@@ -51,11 +45,11 @@ namespace AviaTick.Controllers
         }
 
         // GET: Airports/Create
-        public IActionResult Create(int cityId)
+        public IActionResult Create()
         {
-            ViewBag.CityId = cityId;
+            //ViewBag.CityId = cityId;
             //ViewBag.City = _context.Cities.Where(c => c.Id == cityId).FirstOrDefault().Name;
-            //ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name");
+            ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name");
             return View();
         }
 
@@ -72,11 +66,11 @@ namespace AviaTick.Controllers
                 _context.Add(airport);
                 await _context.SaveChangesAsync();
                 //return RedirectToAction(nameof(Index));
-                return RedirectToAction("Index", "Airports", new { id = cityId});
+                return RedirectToAction("Index", "Airports", new { id = cityId, name = _context.Cities.Where(c => c.Id == cityId).FirstOrDefault().Name});
             }
-            //ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name", airport.CityId);
+            ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name", airport.CityId);
             //return View(airport);
-            return RedirectToAction("Index", "Airports", new { id = cityId});
+            return RedirectToAction("Index", "Airports", new { id = cityId, name = _context.Cities.Where(c => c.Id == cityId).FirstOrDefault().Name });
         }
 
         // GET: Airports/Edit/5
