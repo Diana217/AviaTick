@@ -49,9 +49,9 @@ namespace AviaTick.Controllers
         // GET: Flights/Create
         public IActionResult Create()
         {
-            ViewData["AircraftId"] = new SelectList(_context.Aircraft, "Id", "Id");
-            ViewData["ArrivalId"] = new SelectList(_context.Airports, "Id", "Id");
-            ViewData["DepartureId"] = new SelectList(_context.Airports, "Id", "Id");
+            ViewData["AircraftId"] = new SelectList(_context.Aircraft, "Id", "Name");
+            ViewData["ArrivalId"] = new SelectList(_context.Airports, "Id", "Name");
+            ViewData["DepartureId"] = new SelectList(_context.Airports, "Id", "Name");
             return View();
         }
 
@@ -68,9 +68,9 @@ namespace AviaTick.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AircraftId"] = new SelectList(_context.Aircraft, "Id", "Id", flight.AircraftId);
-            ViewData["ArrivalId"] = new SelectList(_context.Airports, "Id", "Id", flight.ArrivalId);
-            ViewData["DepartureId"] = new SelectList(_context.Airports, "Id", "Id", flight.DepartureId);
+            ViewData["AircraftId"] = new SelectList(_context.Aircraft, "Id", "Name", flight.AircraftId);
+            ViewData["ArrivalId"] = new SelectList(_context.Airports, "Id", "Name", flight.ArrivalId);
+            ViewData["DepartureId"] = new SelectList(_context.Airports, "Id", "Name", flight.DepartureId);
             return View(flight);
         }
 
@@ -87,9 +87,9 @@ namespace AviaTick.Controllers
             {
                 return NotFound();
             }
-            ViewData["AircraftId"] = new SelectList(_context.Aircraft, "Id", "Id", flight.AircraftId);
-            ViewData["ArrivalId"] = new SelectList(_context.Airports, "Id", "Id", flight.ArrivalId);
-            ViewData["DepartureId"] = new SelectList(_context.Airports, "Id", "Id", flight.DepartureId);
+            ViewData["AircraftId"] = new SelectList(_context.Aircraft, "Id", "Name", flight.AircraftId);
+            ViewData["ArrivalId"] = new SelectList(_context.Airports, "Id", "Name", flight.ArrivalId);
+            ViewData["DepartureId"] = new SelectList(_context.Airports, "Id", "Name", flight.DepartureId);
             return View(flight);
         }
 
@@ -125,9 +125,9 @@ namespace AviaTick.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AircraftId"] = new SelectList(_context.Aircraft, "Id", "Id", flight.AircraftId);
-            ViewData["ArrivalId"] = new SelectList(_context.Airports, "Id", "Id", flight.ArrivalId);
-            ViewData["DepartureId"] = new SelectList(_context.Airports, "Id", "Id", flight.DepartureId);
+            ViewData["AircraftId"] = new SelectList(_context.Aircraft, "Id", "Name", flight.AircraftId);
+            ViewData["ArrivalId"] = new SelectList(_context.Airports, "Id", "Name", flight.ArrivalId);
+            ViewData["DepartureId"] = new SelectList(_context.Airports, "Id", "Name", flight.DepartureId);
             return View(flight);
         }
 

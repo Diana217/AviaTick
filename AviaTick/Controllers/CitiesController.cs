@@ -43,7 +43,6 @@ namespace AviaTick.Controllers
             }
 
             return View(city);
-            //return RedirectToAction("Index", "Airports", new { id = city.Id});//, name = city.Name });
         }
 
         // GET: Cities/Create
