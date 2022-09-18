@@ -47,7 +47,7 @@ namespace AviaTick.Controllers
         // GET: Airports/Create
         public IActionResult Create()
         {
-            ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Id");
+            ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace AviaTick.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Id", airport.CityId);
+            ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name", airport.CityId);
             return View(airport);
         }
 
@@ -81,7 +81,7 @@ namespace AviaTick.Controllers
             {
                 return NotFound();
             }
-            ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Id", airport.CityId);
+            ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name", airport.CityId);
             return View(airport);
         }
 
@@ -117,7 +117,7 @@ namespace AviaTick.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Id", airport.CityId);
+            ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name", airport.CityId);
             return View(airport);
         }
 

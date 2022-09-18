@@ -19,7 +19,6 @@ namespace AviaTick
 
         [Display(Name="City")]
         public int CityId { get; set; }
-
         public virtual City City { get; set; } = null!;
         public virtual ICollection<Flight> FlightArrivals { get; set; }
         public virtual ICollection<Flight> FlightDepartures { get; set; }

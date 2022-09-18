@@ -28,7 +28,7 @@ namespace AviaTick
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-J8EAKAU\\SQLEXPRESS; Database=AviaTickDb; Trusted_Connection=True; ");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-H9T34QQ\\SQLEXPRESS01; Database=AviaTickDb; Trusted_Connection=True; ");
             }
         }
 
@@ -39,6 +39,8 @@ namespace AviaTick
                 entity.Property(e => e.Name)
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.SeatsNumber).HasColumnType("int");   
             });
 
             modelBuilder.Entity<Airport>(entity =>
@@ -66,6 +68,8 @@ namespace AviaTick
                 entity.Property(e => e.ArrivalTime).HasColumnType("time(0)");
 
                 entity.Property(e => e.DepartureTime).HasColumnType("time(0)");
+
+                entity.Property(e => e.Price).HasColumnType("decimal");
 
                 entity.HasOne(d => d.Aircraft)
                     .WithMany(p => p.Flights)

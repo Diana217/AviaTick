@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AviaTick
 {
@@ -20,6 +22,11 @@ namespace AviaTick
         [Display(Name = "Arrival time")]
         [Required(ErrorMessage = "The field mustn`t be empty")]
         public TimeSpan ArrivalTime { get; set; }
+
+        [DataType(DataType.Currency)]
+        [Column(TypeName = "decimal(18, 0)")]
+        [Required(ErrorMessage = "The field mustn`t be empty")]
+        public decimal Price { get; set; }
 
         [Display(Name = "Departure airport")]
         public int DepartureId { get; set; }

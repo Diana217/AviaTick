@@ -49,7 +49,7 @@ namespace AviaTick.Controllers
         public IActionResult Create()
         {
             ViewData["FlightId"] = new SelectList(_context.Flights, "Id", "Id");
-            ViewData["PassengerId"] = new SelectList(_context.Passengers, "Id", "Id");
+            ViewData["PassengerId"] = new SelectList(_context.Passengers, "Id", "Name");
             return View();
         }
 
@@ -67,7 +67,7 @@ namespace AviaTick.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["FlightId"] = new SelectList(_context.Flights, "Id", "Id", ticket.FlightId);
-            ViewData["PassengerId"] = new SelectList(_context.Passengers, "Id", "Id", ticket.PassengerId);
+            ViewData["PassengerId"] = new SelectList(_context.Passengers, "Id", "Name", ticket.PassengerId);
             return View(ticket);
         }
 
@@ -85,7 +85,7 @@ namespace AviaTick.Controllers
                 return NotFound();
             }
             ViewData["FlightId"] = new SelectList(_context.Flights, "Id", "Id", ticket.FlightId);
-            ViewData["PassengerId"] = new SelectList(_context.Passengers, "Id", "Id", ticket.PassengerId);
+            ViewData["PassengerId"] = new SelectList(_context.Passengers, "Id", "Name", ticket.PassengerId);
             return View(ticket);
         }
 
@@ -122,7 +122,7 @@ namespace AviaTick.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["FlightId"] = new SelectList(_context.Flights, "Id", "Id", ticket.FlightId);
-            ViewData["PassengerId"] = new SelectList(_context.Passengers, "Id", "Id", ticket.PassengerId);
+            ViewData["PassengerId"] = new SelectList(_context.Passengers, "Id", "Name", ticket.PassengerId);
             return View(ticket);
         }
 
