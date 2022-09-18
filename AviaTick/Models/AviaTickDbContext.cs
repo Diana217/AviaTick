@@ -39,6 +39,8 @@ namespace AviaTick
                 entity.Property(e => e.Name)
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.SeatsNumber).HasColumnType("int");   
             });
 
             modelBuilder.Entity<Airport>(entity =>
@@ -66,6 +68,8 @@ namespace AviaTick
                 entity.Property(e => e.ArrivalTime).HasColumnType("time(0)");
 
                 entity.Property(e => e.DepartureTime).HasColumnType("time(0)");
+
+                entity.Property(e => e.Price).HasColumnType("decimal");
 
                 entity.HasOne(d => d.Aircraft)
                     .WithMany(p => p.Flights)

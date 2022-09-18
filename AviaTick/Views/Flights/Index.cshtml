@@ -27,6 +27,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Departure)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -40,13 +43,16 @@
                 @Html.DisplayFor(modelItem => item.ArrivalTime)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Aircraft.Id)
+                @Html.DisplayFor(modelItem => item.Aircraft.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Arrival.Id)
+                @Html.DisplayFor(modelItem => item.Arrival.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Departure.Id)
+                @Html.DisplayFor(modelItem => item.Departure.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
