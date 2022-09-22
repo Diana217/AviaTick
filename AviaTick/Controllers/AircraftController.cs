@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AviaTick;
+using Microsoft.Extensions.Localization;
 
 namespace AviaTick.Controllers
 {
@@ -15,7 +16,7 @@ namespace AviaTick.Controllers
 
         public AircraftController(AviaTickDbContext context)
         {
-            _context = context;
+            _context=context;
         }
 
         // GET: Aircraft

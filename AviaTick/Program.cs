@@ -4,7 +4,10 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+builder.Services.AddControllersWithViews()
+    .AddDataAnnotationsLocalization()
+    .AddViewLocalization();
 
 builder.Services.AddDbContext<AviaTickDbContext>(option => option.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")
@@ -19,6 +22,13 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+var supportedCultures = new[] { "uk-UA", "en-US" };
+var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[1])
+    .AddSupportedCultures(supportedCultures)
+    .AddSupportedUICultures(supportedCultures);
+
+app.UseRequestLocalization(localizationOptions);
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

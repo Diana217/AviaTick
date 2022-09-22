@@ -42,6 +42,12 @@
             </div>
         </nav>
     </header>
+    <div class="container body-content">
+        <div>
+            @await Html.PartialAsync("_SelectLanguagePartial")
+        </div>
+        @RenderBody()
+    </div>
     <summary style="position:absolute; right:3px;">
         <date></date><br />
         <time></time>
