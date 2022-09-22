@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AviaTick", "AviaTick\AviaTick.csproj", "{1B4C00B2-C2DE-4E20-8480-BFEDA5EB31EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AviaTick", "AviaTick\AviaTick.csproj", "{1B4C00B2-C2DE-4E20-8480-BFEDA5EB31EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AviaTick.Tests", "AviaTick.Tests\AviaTick.Tests.csproj", "{51C9D267-C8DA-4C80-AFF7-E2C9A796EB66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{1B4C00B2-C2DE-4E20-8480-BFEDA5EB31EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B4C00B2-C2DE-4E20-8480-BFEDA5EB31EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B4C00B2-C2DE-4E20-8480-BFEDA5EB31EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51C9D267-C8DA-4C80-AFF7-E2C9A796EB66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51C9D267-C8DA-4C80-AFF7-E2C9A796EB66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51C9D267-C8DA-4C80-AFF7-E2C9A796EB66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51C9D267-C8DA-4C80-AFF7-E2C9A796EB66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
