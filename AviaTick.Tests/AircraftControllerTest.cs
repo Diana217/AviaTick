@@ -11,6 +11,8 @@ using AviaTick.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore.InMemory;
+using Microsoft.Extensions.Options;
 
 namespace AviaTick.Tests
 {
@@ -38,6 +40,34 @@ namespace AviaTick.Tests
 
             var viewResult = Assert.IsType<ViewResult>(result);
             Assert.Null(viewResult.ViewData.Model);
+        }
+
+        [Fact]
+        public void Test1()
+        {
+            /*var options = new DbContextOptionsBuilder<AviaTickDbContext>()
+                .UseInMemoryDatabase(databaseName: "AviaTickDb")
+                .Options;
+
+            using(var context = new AviaTickDbContext(options))
+            {
+                context.Aircraft.Add(new Aircraft { Id = 2, Name = "Boeing", SeatsNumber = 300 });
+                context.SaveChanges();
+            }
+
+            /*    using(var context = new AviaTickDbContext(options))
+                {
+                    List<Aircraft> aircraft = context.GetAll
+                }*/
+            var mockRepo = new Mock<AviaTickDbContext>();
+            mockRepo.Setup(repo => repo.Aircraft);
+            var controller = new AircraftController(mockRepo.Object);
+           // controller.ModelState.AddModelError("Name", "Name is required");
+
+            var result = controller.Index;
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Null(viewResult.ViewData.Model);
+            mockRepo.Verify();
         }
     }
 }
